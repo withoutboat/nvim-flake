@@ -8,7 +8,8 @@
   outputs = _: {
     homeManagerModules.default = _: {
       imports = [
-        ./telescope.nix
+        ./telescope
+        ./init-lua.nix
       ];
 
       programs.neovim = {
