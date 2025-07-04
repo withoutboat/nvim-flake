@@ -7,6 +7,10 @@
 
   outputs = _: {
     homeManagerModules.default = _: {
+      imports = [
+        ./telescope.nix
+      ];
+
       programs.neovim = {
         enable = true;
       };
