@@ -13,7 +13,7 @@
       telescope = import ./telescope {inherit pkgs;};
     in {
       programs.neovim = {
-        enable = true;
+        enable = false;
         viAlias = true;
 	defaultEditor = true;
 
