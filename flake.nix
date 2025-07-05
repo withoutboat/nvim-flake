@@ -8,21 +8,37 @@
   outputs = _: {
     homeManagerModules.default = {
       pkgs,
-      lib,
-    }: let
-      telescope = import ./telescope {inherit pkgs;};
-    in {
+      lib, }:  {
       programs.neovim = {
-        enable = false;
+        enable = true;
         viAlias = true;
 	defaultEditor = true;
 
-        plugins = lib.mkMerge [
-          telescope.plugins
+        plugins = with pkgs.vimPlugins; [
+   	 {
+   	   plugin = telescope-nvim;
+   	   type = "lua";
+   	   config = builtins.readFile ./telescope.lua;
+   	   optional = true;
+   	 }
+	 {
+	      plugin = telescope-fzf-native-nvim;
+	      optional = true;
+	    }
+	    {
+	      plugin = telescope-ui-select-nvim;
+	      optional = true;
+	    }
+	    {
+	      plugin = telescope-file-browser-nvim;
+	      optional = true;
+	    }
+
         ];
 
-        extraPackages = lib.mkMerge [
-          telescope.extraPackages
+        extraPackages = with pkgs; [
+            ripgrep
+    		fd 
         ];
       };
     };
