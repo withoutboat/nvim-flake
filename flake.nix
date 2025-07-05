@@ -37,6 +37,14 @@
 	      plugin = telescope-file-browser-nvim;
 	      optional = false;
 	    }
+      {
+	      plugin = telescope-projects-nvim;
+	      optional = false;
+	    }
+;
+	      optional = false;
+	    }
+
 
         ];
 
