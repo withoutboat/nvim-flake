@@ -44,6 +44,10 @@
             ripgrep
     		fd 
         ];
+
+	extraConfig = builtins.concatStringsSep "\n" (
+      [ staticConfig ] 
+    );
       };
     };
   };
