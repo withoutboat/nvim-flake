@@ -1,17 +1,27 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
-  programs.neovim = {
-    enable = true;
-    plugins = with pkgs.vimPlugins; [
-      telescope-nvim
-      telescope-fzf-native-nvim
-      telescope-file-browser-nvim
-    ];
-    extraPackages = with pkgs; [ripgrep fd];
-  };
+{pkgs, ...}: {
+  plugins = with pkgs.vimPlugins; [
+    {
+      plugin = telescope-nvim;
+      type = "lua";
+      config = builtins.readFile ./telescope.lua;
+      optional = true;
+    }
+    {
+      plugin = telescope-fzf-native-nvim;
+      optional = true;
+    }
+    {
+      plugin = telescope-ui-select-nvim;
+      optional = true;
+    }
+    {
+      plugin = telescope-file-browser-nvim;
+      optional = true;
+    }
+  ];
 
-  xdg.configFile."nvim/lua/${config.home.username}/telescope.lua".source = ./telescope.lua;
+  extraPackages = with pkgs; [
+    ripgrep
+    fd
+  ];
 }

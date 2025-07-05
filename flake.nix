@@ -6,14 +6,23 @@
   };
 
   outputs = _: {
-    homeManagerModules.default = _: {
-      imports = [
-        ./telescope
-        ./init-lua.nix
-      ];
-
+    homeManagerModules.default = {
+      pkgs,
+      lib,
+    }: let
+      telescope = import ./telescope {inherit pkgs;};
+    in {
       programs.neovim = {
         enable = true;
+        viAlias = true;
+
+        plugins = lib.mkMerge [
+          telescope.plugins
+        ];
+
+        extraPackages = lib.mkMerge [
+          telescope.extraPackages
+        ];
       };
     };
   };
