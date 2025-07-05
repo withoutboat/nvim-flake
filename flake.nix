@@ -41,11 +41,6 @@
 	      plugin = telescope-projects-nvim;
 	      optional = false;
 	    }
-;
-	      optional = false;
-	    }
-
-
         ];
 
         extraPackages = with pkgs; [
