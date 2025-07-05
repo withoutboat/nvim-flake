@@ -6,7 +6,11 @@
   };
 
   outputs = _: {
-    homeManagerModules.default = {
+    homeManagerModules.default = let
+ staticConfig = ''
+    luafile ${builtins.toString ./lua/base.lua}
+  '';
+    in {
       pkgs,
       lib, ... }:  {
       programs.neovim = {
@@ -19,7 +23,7 @@
    	   plugin = telescope-nvim;
    	   type = "lua";
    	   config = builtins.readFile ./telescope/telescope.lua;
-   	   optional = true;
+   	   optional = false;
    	 }
 	 {
 	      plugin = telescope-fzf-native-nvim;
