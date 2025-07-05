@@ -37,11 +37,7 @@
 	      plugin = telescope-file-browser-nvim;
 	      optional = false;
 	    }
-      {
-	      plugin = telescope-projects-nvim;
-	      optional = false;
-	    }
-        ];
+              ];
 
         extraPackages = with pkgs; [
             ripgrep
