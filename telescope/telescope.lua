@@ -3,6 +3,8 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
+
+
 local function telescope_buffer_dir()
 	return vim.fn.expand("%:p:h")
 end
@@ -126,10 +128,11 @@ telescope.setup({
 		},
 	},
 })
-
 telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
---telescope.load_extension("projects")
+telescope.load_extension("projects")
+
+
 
 vim.keymap.set("n", ";f", function()
 	builtin.find_files({

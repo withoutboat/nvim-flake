@@ -27,15 +27,15 @@
    	 }
 	 {
 	      plugin = telescope-fzf-native-nvim;
-	      optional = true;
+	      optional = false;
 	    }
 	    {
 	      plugin = telescope-ui-select-nvim;
-	      optional = true;
+	      optional = false;
 	    }
 	    {
 	      plugin = telescope-file-browser-nvim;
-	      optional = true;
+	      optional = false;
 	    }
 
         ];
