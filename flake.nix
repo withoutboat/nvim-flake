@@ -18,7 +18,7 @@
    	 {
    	   plugin = telescope-nvim;
    	   type = "lua";
-   	   config = builtins.readFile ./telescope.lua;
+   	   config = builtins.readFile ./telescope/telescope.lua;
    	   optional = true;
    	 }
 	 {
