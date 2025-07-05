@@ -8,7 +8,7 @@
   outputs = _: {
     homeManagerModules.default = {
       pkgs,
-      lib, }:  {
+      lib, ... }:  {
       programs.neovim = {
         enable = true;
         viAlias = true;
