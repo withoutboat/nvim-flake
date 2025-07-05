@@ -15,6 +15,7 @@
       programs.neovim = {
         enable = true;
         viAlias = true;
+	defaultEditor = true;
 
         plugins = lib.mkMerge [
           telescope.plugins
