@@ -2,7 +2,7 @@
 {
   plugins = with pkgs.vimPlugins; [
     {
-      plugin = conform;
+      plugin =  conform-nvim;
       type = "lua";
       config = builtins.readFile ./conform.lua;
     }
