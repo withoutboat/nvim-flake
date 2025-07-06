@@ -12,9 +12,9 @@ for _, sign in ipairs(default_signs) do
 	vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name })
 end
 
+local prefix = ""
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = "",
 		format = function(diagnostic)
 			local icon = ({
 				[vim.diagnostic.severity.ERROR] = " ",
@@ -22,7 +22,7 @@ vim.diagnostic.config({
 				[vim.diagnostic.severity.INFO] = " ",
 				[vim.diagnostic.severity.HINT] = " ",
 			})[diagnostic.severity] or ""
-			return icon .. diagnostic.message
+			return icon .. prefix .. diagnostic.message
 		end,
 	},
 	update_in_insert = false,
