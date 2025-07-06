@@ -7,6 +7,7 @@ vim.opt.fileencoding = 'utf-8'
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+vim.o.clipboard = "unnamedplus"
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.hlsearch = true
@@ -16,7 +17,6 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = 'nu'
 vim.opt.backupskip = '/tmp/*,/private/tmp/*'
 vim.opt.inccommand = 'split'
 vim.opt.ignorecase = true
