@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = {pkgs,...}: {
+  outputs = {...}: {
     homeManagerModules.default = let
  staticConfig = ''
     luafile ${builtins.toString ./lua/base.lua}
