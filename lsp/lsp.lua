@@ -9,7 +9,7 @@ local default_signs = {
 }
 
 for _, sign in ipairs(default_signs) do
-	vim.api.nvim_set_sign(sign.name, { text = sign.text, texthl = sign.name })
+  vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name })
 end
 
 vim.diagnostic.config({
