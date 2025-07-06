@@ -14,6 +14,7 @@ end
 
 vim.diagnostic.config({
 	virtual_text = {
+		prefix = "",
 		format = function(diagnostic)
 			local icon = ({
 				[vim.diagnostic.severity.ERROR] = " ",
@@ -26,7 +27,6 @@ vim.diagnostic.config({
 	},
 	update_in_insert = false,
 	severity_sort = true,
-
 	float = {
 		border = "rounded",
 		source = "always",
