@@ -11,10 +11,10 @@
         staticConfig = ''
           luafile ${builtins.toString ./lua/base.lua}
         '';
-        telescope = import ./telescope/default.nix { inherit pkgs; };
-        threesitter = import ./threesitter/default { inherit pkgs; };
-        lsp = import ./lsp/default { inherit pkgs; };
-        conform = import ./conform/default { inherit pkgs; };
+        telescope = import ./telescope { inherit pkgs; };
+        threesitter = import ./threesitter { inherit pkgs; };
+        lsp = import ./lsp { inherit pkgs; };
+        conform = import ./conform { inherit pkgs; };
       in {
         programs.neovim = {
           enable = true;
