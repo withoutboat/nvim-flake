@@ -8,6 +8,10 @@ local default_signs = {
 	{ name = "DiagnosticSignInfo", text = "" },
 }
 
+for _, sign in ipairs(default_signs) do
+	vim.api.nvim_set_sign(sign.name, { text = sign.text, texthl = sign.name })
+end
+
 vim.diagnostic.config({
 	signs = { active = true, values = default_signs },
 	virtual_text = true,
