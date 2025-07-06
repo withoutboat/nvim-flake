@@ -25,7 +25,7 @@
             ++ (with pkgs.vimPlugins; [
             ]);
 
-            extraPackages = lsp.extraPackages ++ (with pkgs; [
+            extraPackages = lsp.extraPackages ++ conform.extraPackages ++ (with pkgs; [
               ripgrep
               fd
             ]);
