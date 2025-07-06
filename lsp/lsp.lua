@@ -81,6 +81,9 @@ local luasnip = require("luasnip")
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 local lspkind = require("lspkind")
+require("copilot_cmp").setup({
+	method = "getCompletionsCycling", -- or use "getCompletions" if preferred
+})
 
 cmp.setup({
 	snippet = {
@@ -89,6 +92,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		{ name = "Copilot" },
 		{ name = "path" },
 		{ name = "nvim_lsp", keyword_length = 1 },
 		{ name = "buffer", keyword_length = 3 },

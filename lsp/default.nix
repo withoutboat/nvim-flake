@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   plugins = with pkgs.vimPlugins; [
     {
       plugin = nvim-lspconfig;
@@ -8,12 +7,13 @@
     }
     nvim-cmp
     cmp-nvim-lsp
-    cmp-buffer 
+    cmp-buffer
     cmp-path
-    cmp-cmdline 
+    cmp-cmdline
     cmp_luasnip
     luasnip
     lspkind-nvim
+    nvim-copilot
   ];
 
   extraPackages = with pkgs; [
