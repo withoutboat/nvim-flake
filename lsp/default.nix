@@ -10,7 +10,9 @@
     cmp-nvim-lsp
     cmp-buffer 
     cmp-path
-    cmp-cmdline luasnip
+    cmp-cmdline 
+    cmp_luasnip
+    luasnip
     lspkind-nvim
   ];
 

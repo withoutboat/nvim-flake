@@ -2,7 +2,7 @@ local lspconfig = require("lspconfig")
 
 local function define_signs(signs)
 	for _, sign in ipairs(signs) do
-		vim.api.nvim_set_sign(sign.name, { text = sign.text, texthl = sign.name })
+    vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name })
 	end
 end
 
