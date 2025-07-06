@@ -18,7 +18,6 @@
     nixd
     lua-language-server
     nodePackages.typescript-language-server
-    nodePackages.pyright
     # rust-analyzer
     # clang-tools
   ];
