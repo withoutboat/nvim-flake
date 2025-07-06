@@ -13,9 +13,10 @@ for _, sign in ipairs(default_signs) do
 end
 
 vim.diagnostic.config({
-	signs = { active = true, values = default_signs },
 	virtual_text = true,
 	update_in_insert = false,
+	severity_sort = true,
+
 	float = {
 		border = "rounded",
 		source = "always",
