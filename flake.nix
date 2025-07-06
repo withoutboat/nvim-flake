@@ -13,21 +13,22 @@
         '';
         telescope = import ./telescope/default.nix { inherit pkgs; };
         threesitter = import ./threesitter/default { inherit pkgs; };
+        lsp = import ./lsp/default { inherit pkgs; };
+        conform = import ./conform/default { inherit pkgs; };
       in {
         programs.neovim = {
           enable = true;
           viAlias = true;
           defaultEditor = true;
 
-          plugins = telescope.plugins ++ threesitter.plugins
+          plugins = telescope.plugins ++ threesitter.plugins ++ lsp.plugins ++ conform.plugins
             ++ (with pkgs.vimPlugins; [
-              # Add additional plugins here if needed
             ]);
 
-           extraPackages = with pkgs; [
-            ripgrep
-            fd 
-          ];
+            extraPackages = lsp.extraPackages ++ (with pkgs; [
+              ripgrep
+              fd
+            ]);
 
           extraConfig = builtins.concatStringsSep "\n" [
             staticConfig
