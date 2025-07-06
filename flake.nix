@@ -5,11 +5,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = _: {
+  outputs = {pkgs,...}: {
     homeManagerModules.default = let
  staticConfig = ''
     luafile ${builtins.toString ./lua/base.lua}
   '';
+
+  telescope = import ./telescope/default.nix { inherit pkgs; };
     in {
       pkgs,
       lib, ... }:  {
@@ -18,26 +20,8 @@
         viAlias = true;
 	defaultEditor = true;
 
-        plugins = with pkgs.vimPlugins; [
-   	 {
-   	   plugin = telescope-nvim;
-   	   type = "lua";
-   	   config = builtins.readFile ./telescope/telescope.lua;
-   	   optional = false;
-   	 }
-	 {
-	      plugin = telescope-fzf-native-nvim;
-	      optional = false;
-	    }
-	    {
-	      plugin = telescope-ui-select-nvim;
-	      optional = false;
-	    }
-	    {
-	      plugin = telescope-file-browser-nvim;
-	      optional = false;
-	    }
-              ];
+        plugins = telescope.plugins
+        ++ with pkgs.vimPlugins; [];
 
         extraPackages = with pkgs; [
             ripgrep
