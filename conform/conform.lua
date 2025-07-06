@@ -1,12 +1,16 @@
-require("conform").setup({
-  formatters_by_ft = {
-    nix = { "alejandra" },
-    lua = { "stylua" },
-    -- add more as needed
+return {
+  "stevearc/conform.nvim",
+  opts = {
+    formatters_by_ft = {
+      nix = { "alejandra" },
+      lua = { "stylua" },
+    },
+    format_on_save = function(bufnr)
+      local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+      if #clients > 0 then
+        return { lsp_fallback = false }
+      end
+      return nil
+    end,
   },
-  format_on_save = function(bufnr)
-    -- Only format if there is at least one LSP client attached
-    local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
-    return #clients > 0
-  end,
-})
+}
