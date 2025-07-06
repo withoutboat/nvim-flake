@@ -23,10 +23,10 @@
               # Add additional plugins here if needed
             ]);
 
-          extraPackages = telescope.extraPackages
-            ++ (with pkgs; [
-              # Add additional tools here if needed
-            ]);
+           extraPackages = with pkgs; [
+            ripgrep
+            fd 
+          ]
 
           extraConfig = builtins.concatStringsSep "\n" [
             staticConfig
