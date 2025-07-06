@@ -30,7 +30,7 @@
         owner = "zbirenbaum";
         repo = "copilot-cmp";
         rev = "be98d3a4afc2e3e746d9380405d4a480f38e19c8";
-        sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAA=";
+        sha256 = "0000000000000000000000000000000000000000000000000000";
       };
     })
   ];
