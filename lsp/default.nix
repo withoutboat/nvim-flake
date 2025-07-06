@@ -29,7 +29,7 @@
       src = pkgs.fetchFromGitHub {
         owner = "zbirenbaum";
         repo = "copilot-cmp";
-        rev = "15fc12af3d0109fa76b60b5cffa1373697e261d1";
+        rev = "e8c0e4c4b2d1e4edb8f3b7d3d2f0c6a4d3d81fd4";
         sha256 = "sha256-erRL8bY/zuwuCZfttw+avTrFV7pjv2H6v73NzY2bymM=";
       };
     })
