@@ -6,5 +6,6 @@ return {
       lua = { "stylua" },
     },
     format_on_save = { lsp_fallback = true },
+    notify_on_error = true,
   },
 }
