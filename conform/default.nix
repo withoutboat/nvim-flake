@@ -7,4 +7,9 @@
       config = builtins.readFile ./conform.lua;
     }
   ];
+
+  extraPackages = with pkgs; [
+      alejandra
+  stylua
+  ];
 }
