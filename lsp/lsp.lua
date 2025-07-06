@@ -16,10 +16,10 @@ vim.diagnostic.config({
 	virtual_text = {
 		prefix = function(diagnostic)
 			return ({
-				[vim.diagnostic.severity.ERROR] = " ",
-				[vim.diagnostic.severity.WARN] = " ",
-				[vim.diagnostic.severity.INFO] = " ",
-				[vim.diagnostic.severity.HINT] = " ",
+				[vim.diagnostic.severity.ERROR] = "",
+				[vim.diagnostic.severity.WARN] = "",
+				[vim.diagnostic.severity.INFO] = "",
+				[vim.diagnostic.severity.HINT] = "",
 			})[diagnostic.severity] or ""
 		end,
 	},
@@ -80,6 +80,7 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
+local lspkind = require("lspkind")
 
 cmp.setup({
 	snippet = {
@@ -97,18 +98,38 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	formatting = {
-		fields = { "menu", "abbr", "kind" },
-		format = function(entry, item)
-			local menu_icon = {
-				nvim_lsp = "λ",
-				luasnip = "⋗",
-				buffer = "Ω",
-				path = "🖫",
-			}
-
-			item.menu = menu_icon[entry.source.name]
-			return item
-		end,
+		format = lspkind.cmp_format({
+			mode = "symbol_text", -- Show symbol + text, adjust as needed
+			maxwidth = 50,
+			symbol_map = {
+				Copilot = "",
+				Text = "",
+				Method = "ƒ",
+				Function = "",
+				Constructor = "",
+				Field = "",
+				Variable = "",
+				Class = "",
+				Interface = "",
+				Module = "",
+				Property = "",
+				Unit = "",
+				Value = "",
+				Enum = "",
+				Keyword = "",
+				Snippet = "",
+				Color = "",
+				File = "",
+				Reference = "",
+				Folder = "",
+				EnumMember = "",
+				Constant = "",
+				Struct = "",
+				Event = "ﯠ",
+				Operator = "",
+				TypeParameter = "",
+			},
+		}),
 	},
 	mapping = {
 		["<Up>"] = cmp.mapping.select_prev_item(select_opts),
@@ -142,7 +163,6 @@ cmp.setup({
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			local col = vim.fn.col(".") - 1
-
 			if cmp.visible() then
 				cmp.select_next_item(select_opts)
 			elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then

@@ -109,3 +109,44 @@ The following are ignored in searches:
 > See the actual
 > [telescope.lua](https://github.com/withoutboat/nvim-flake/telescope/telescope.lua)
 > for details and updates.
+
+## Neovim LSP Key Mappings
+
+> Generated for: withoutboat  
+> Date: 2025-07-06 14:10:03 UTC
+
+### LSP Buffer Commands
+
+| Mapping | Mode | Action                                   | Description                                                       |
+|---------|------|------------------------------------------|-------------------------------------------------------------------|
+| K       | Normal | <code>:lua vim.lsp.buf.hover()</code>        | Display hover information for the symbol under the cursor.       |
+| gd      | Normal | <code>:lua vim.lsp.buf.definition()</code>   | Jump to the definition of the symbol under the cursor.           |
+| gD      | Normal | <code>:lua vim.lsp.buf.declaration()</code>  | Jump to the declaration of the symbol under the cursor.          |
+| gi      | Normal | <code>:lua vim.lsp.buf.implementation()</code> | Jump to the implementations of the symbol under the cursor.       |
+| go      | Normal | <code>:lua vim.lsp.buf.type_definition()</code> | Jump to the type definition of the symbol under the cursor.       |
+| gr      | Normal | <code>:lua vim.lsp.buf.references()</code>    | Show all references to the symbol under the cursor.              |
+| gs      | Normal | <code>:lua vim.lsp.buf.signature_help()</code> | Display signature help information.                              |
+| <F2>    | Normal | <code>:lua vim.lsp.buf.rename()</code>         | Rename the symbol under the cursor.                              |
+| <F3>    | Normal | <code>:lua vim.lsp.buf.format({ async = true })</code> | Format the current buffer asynchronously.                         |
+| <F4>    | Normal | <code>:lua vim.lsp.buf.code_action()</code>    | Show and select a code action for the current cursor position.    |
+| gl      | Normal | <code>:lua vim.diagnostic.open_float()</code>  | Open the diagnostics float window with details.                  |
+| [d      | Normal | <code>:lua vim.diagnostic.goto_prev()</code>   | Jump to the previous diagnostic message.                          |
+| ]d      | Normal | <code>:lua vim.diagnostic.goto_next()</code>   | Jump to the next diagnostic message.                              |
+
+### Completion (nvim-cmp) Mappings
+
+| Mapping | Mode | Description |
+|---------|------|-------------|
+| <Up>    | Insert | Select previous completion item |
+| <Down>  | Insert | Select next completion item |
+| <C-p>   | Insert | Select previous completion item (alternative) |
+| <C-n>   | Insert | Select next completion item (alternative) |
+| <C-u>   | Insert | Scroll documentation window up by 4 lines |
+| <C-d>   | Insert | Scroll documentation window down by 4 lines |
+| <C-e>   | Insert | Abort/cancel completion |
+| <C-y>   | Insert | Confirm completion (with selection) |
+| <CR>    | Insert | Confirm completion (without selection) |
+| <C-f>   | Insert, Select | Jump to next snippet placeholder (if available) |
+| <C-b>   | Insert, Select | Jump to previous snippet placeholder (if available) |
+| <Tab>   | Insert, Select | Select next item, or trigger completion if not visible |
+| <S-Tab> | Insert, Select | Select previous item in completion menu |
