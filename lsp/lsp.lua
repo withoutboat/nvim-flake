@@ -9,11 +9,21 @@ local default_signs = {
 }
 
 for _, sign in ipairs(default_signs) do
-  vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name })
+	vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name })
 end
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = {
+		format = function(diagnostic)
+			local icon = ({
+				[vim.diagnostic.severity.ERROR] = " ",
+				[vim.diagnostic.severity.WARN] = " ",
+				[vim.diagnostic.severity.INFO] = " ",
+				[vim.diagnostic.severity.HINT] = " ",
+			})[diagnostic.severity] or ""
+			return icon .. diagnostic.message
+		end,
+	},
 	update_in_insert = false,
 	severity_sort = true,
 
