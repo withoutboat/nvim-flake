@@ -81,9 +81,10 @@ local luasnip = require("luasnip")
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 local lspkind = require("lspkind")
+
 require("copilot").setup({
-  suggestion = { enabled = false },  
-  panel = { enabled = false },
+	suggestion = { enabled = false },
+	panel = { enabled = false },
 })
 
 require("copilot_cmp").setup()
@@ -95,7 +96,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "Copilot" },
+		{ name = "Copilot", keyword_length = 2 },
 		{ name = "path" },
 		{ name = "nvim_lsp", keyword_length = 1 },
 		{ name = "buffer", keyword_length = 3 },
