@@ -21,7 +21,7 @@
 	defaultEditor = true;
 
         plugins = telescope.plugins
-        ++ with pkgs.vimPlugins; [];
+        ++ (with pkgs.vimPlugins; []);
 
         extraPackages = with pkgs; [
             ripgrep
