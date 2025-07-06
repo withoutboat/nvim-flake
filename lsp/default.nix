@@ -24,15 +24,15 @@
       };
     })
 
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "copilot-cmp";
-      src = pkgs.fetchFromGitHub {
-        owner = "zbirenbaum";
-        repo = "copilot-cmp";
-        rev = "15fc12af3d0109fa76b60b5cffa1373697e261d1";
-        sha256 = "sha256-erRL8bY/zuwuCZfttw+avTrFV7pjv2H6v73NzY2bymM=";
-      };
-    })
+    #  (pkgs.vimUtils.buildVimPlugin {
+    #    name = "copilot-cmp";
+    #    src = pkgs.fetchFromGitHub {
+    #      owner = "zbirenbaum";
+    #      repo = "copilot-cmp";
+    #      rev = "15fc12af3d0109fa76b60b5cffa1373697e261d1";
+    #      sha256 = "sha256-erRL8bY/zuwuCZfttw+avTrFV7pjv2H6v73NzY2bymM=";
+    #    };
+    #  })
   ];
 
   extraPackages = with pkgs; [
