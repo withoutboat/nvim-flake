@@ -20,7 +20,7 @@
         owner = "zbirenbaum";
         repo = "copilot.lua";
         rev = "46f4b7d026cba9497159dcd3e6aa61a185cb1c48";
-        sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # <-- get this from nix output
+        sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
       };
     })
 
@@ -30,7 +30,7 @@
         owner = "zbirenbaum";
         repo = "copilot-cmp";
         rev = "15fc12af3d0109fa76b60b5cffa1373697e261d1";
-        sha256 = "sha256-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB="; # <-- get this from nix output
+        sha256 = "sha256-erRL8bY/zuwuCZfttw+avTrFV7pjv2H6v73NzY2bymM=";
       };
     })
   ];
