@@ -19,7 +19,7 @@
       src = pkgs.fetchFromGitHub {
         owner = "zbirenbaum";
         repo = "copilot.lua";
-        rev = "main";
+        rev = "46f4b7d026cba9497159dcd3e6aa61a185cb1c48";
         sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # <-- get this from nix output
       };
     })
@@ -29,7 +29,7 @@
       src = pkgs.fetchFromGitHub {
         owner = "zbirenbaum";
         repo = "copilot-cmp";
-        rev = "main";
+        rev = "15fc12af3d0109fa76b60b5cffa1373697e261d1";
         sha256 = "sha256-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB="; # <-- get this from nix output
       };
     })
