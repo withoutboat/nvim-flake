@@ -12,13 +12,14 @@
           luafile ${builtins.toString ./lua/base.lua}
         '';
         telescope = import ./telescope/default.nix { inherit pkgs; };
+        threesitter = import ./threesitter/default { inherit pkgs; };
       in {
         programs.neovim = {
           enable = true;
           viAlias = true;
           defaultEditor = true;
 
-          plugins = telescope.plugins
+          plugins = telescope.plugins ++ threesitter.plugins
             ++ (with pkgs.vimPlugins; [
               # Add additional plugins here if needed
             ]);
