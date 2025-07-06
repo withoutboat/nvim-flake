@@ -26,7 +26,7 @@
            extraPackages = with pkgs; [
             ripgrep
             fd 
-          ]
+          ];
 
           extraConfig = builtins.concatStringsSep "\n" [
             staticConfig
