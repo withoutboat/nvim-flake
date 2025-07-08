@@ -82,13 +82,6 @@ local luasnip = require("luasnip")
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 local lspkind = require("lspkind")
 
-require("copilot").setup({
-	suggestion = { enabled = true },
-	panel = { enabled = true },
-})
-
-require("copilot_cmp").setup()
-
 cmp.setup({
 	snippet = {
 		expand = function(args)

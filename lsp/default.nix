@@ -14,7 +14,7 @@
     luasnip
     lspkind-nvim
     copilot-cmp
-	copilot-lua
+    copilot-lua
   ];
 
   extraPackages = with pkgs; [
