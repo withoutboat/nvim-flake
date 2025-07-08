@@ -38,6 +38,8 @@
             fd
           ]);
 
+        extraPython3Packages = copilot.extraPython3Packages;
+
         extraConfig = builtins.concatStringsSep "\n" [
           staticConfig
           # Add additional config strings here if needed

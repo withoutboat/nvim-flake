@@ -1,14 +1,20 @@
 {pkgs, ...}: {
   plugins = with pkgs.vimPlugins; [
     {
-      plugin = copilotchat-nvim;
+      plugin = copilot-lua;
       type = "lua";
       config = builtins.readFile ./copilot.lua;
     }
     copilot-cmp
-    copilot-lua
     plenary-nvim
   ];
 
-  extraPackages = with pkgs; [];
+  extraPackages = with pkgs; [copilotchat-nvim];
+
+  extraPython3Packages = p: [
+    p.python-dotenv
+    p.requests
+    p.prompt-toolkit
+    p.tiktoken
+  ];
 }
