@@ -10,6 +10,7 @@
     homeManagerModules.default = {...}: {
       imports = [
         nixvim.homeManagerModules.nixvim
+	./telescope
       ];
 
       home.shellAliases.v = "nvim";
