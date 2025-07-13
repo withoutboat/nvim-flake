@@ -25,7 +25,9 @@
 
     plugins.telescope = {
       enable = true;
-      extensions.fzf-native.enable = true;
+
+      settings = {
+extensions.fzf-native.enable = true;
       extensions.undo.enable = true;
       extensions.frecency.enable = true;
 
@@ -113,5 +115,7 @@
         set_env.COLORTERM = "truecolor";
       };
     };
+      };
+      
   };
 }
