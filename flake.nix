@@ -18,6 +18,7 @@
       programs.nixvim = {
         enable = true;
         defaultEditor = true;
+	globals.mapleader = ";";
 
         nixpkgs.useGlobalPackages = true;
 
