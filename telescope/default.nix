@@ -1,91 +1,117 @@
-{
-  programs.nixvim.plugins.telescope = {
-    enable = true;
+{pkgs,...}: {
+   programs.nixvim = {
+    keymaps = [
+      {
+        action = "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>";
+        key = "<leader>fa";
+        options = {
+          desc = "Find all files";
+        };
+        mode = [
+          "n"
+        ];
+      }
+      {
+        action = "<cmd> Telescope frecency <CR>";
+        key = "<leader>fR";
+        options = {
+          desc = "Find most used files";
+        };
+        mode = [
+          "n"
+        ];
+      }
+    ];
 
-    keymaps = {
-      "<leader>ff" = "find_files";
-      "<leader>fg" = "live_grep";
-      "<leader>b" = "buffers";
-      "<leader>fh" = "help_tags";
-      "<leader>fc" = "command_history";
-      "<leader>fd" = "diagnostics";
-      "<leader>fk" = "keymaps";
-      "<leader>fw" = "grep_string";
-      "<leader>fs" = "builtin";
-      "<leader>f." = "oldfiles";
+    plugins.telescope = {
+      enable = true;
+      extensions.fzf-native.enable = true;
+      extensions.undo.enable = true;
+      extensions.frecency.enable = true;
 
-      "<C-p>" = "git_files";
-      "<leader>p" = "oldfiles";
-      "<C-f>" = "live_grep";
-    };
+      keymaps = {
+        "<leader>ff" = {
+          action = "find_files";
+          desc = "Find files";
+        };
+        "<leader>fz" = {
+          action = "current_buffer_fuzzy_find";
+          desc = "Find in current buffer";
+        };
+        "<leader>fr" = {
+          action = "oldfiles";
+          desc = "Recent files";
+        };
+        "<leader>fg" = {
+          action = "live_grep";
+          desc = "Grep";
+        };
+        "<leader>fw" = {
+          action = "grep_string";
+          desc = "Search word under cursor";
+        };
+        "<leader>fb" = {
+          action = "buffers";
+          desc = "Find buffer";
+        };
+        "<leader>fc" = {
+          action = "command_history";
+          desc = "Search in command history";
+        };
+      };
 
-    settings.defaults = {
-      file_ignore_patterns = [
-        "^.git/"
-	"node_modules"
-      ];
-      set_env.COLORTERM = "truecolor";
+      defaults = {
+        vimgrep_arguments = [
+          "${pkgs.ripgrep}/bin/rg"
+          "-L"
+          "--color=never"
+          "--no-heading"
+          "--with-filename"
+          "--line-number"
+          "--column"
+          "--smart-case"
+          "--fixed-strings"
+        ];
+        file_ignore_patterns = [
+          "^node_modules/"
+          "^.devenv/"
+          "^.direnv/"
+          "^.git/"
+        ];
+        prompt_prefix = "   ";
+        selection_caret = "  ";
+        entry_prefix = "  ";
+        color_devicons = true;
+        initial_mode = "insert";
+        selection_strategy = "reset";
+        sorting_strategy = "ascending";
+        borderchars = [
+          "─"
+          "│"
+          "─"
+          "│"
+          "╭"
+          "╮"
+          "╯"
+          "╰"
+        ];
+        border = {};
+        layout_strategy = "horizontal";
+        layout_config = {
+          horizontal = {
+            prompt_position = "top";
+            preview_width = 0.55;
+            results_width = 0.8;
+          };
+          vertical = {
+            mirror = false;
+          };
+          width = 0.87;
+          height = 0.80;
+          preview_cutoff = 120;
+        };
+        set_env.COLORTERM = "truecolor";
+      };
     };
   };
-
-  programs.nixvim.keymaps = [
-    {
-      mode = "n";
-      key = "<C-t>";
-      action.__raw = ''
-	function()
-	  require('telescope.builtin').live_grep({
-	    default_text="TODO",
-	    initial_mode="normal"
-	  })
-	end
-      '';
-      options.silent = true;
-      options.desc = "search for todo string";
-    }
-    {
-      mode = "n";
-      key = "<leader>/";
-      action.__raw = ''
-      function()
-	require('telescope.builtin').current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-				      winblend = 10,
-				      previewer = false,
-			      }))
-      end
-      '';
-      options.desc = "fuzzily search in current buffer";
-    }
-    {
-      mode = "n";
-      key = "<leader>f/";
-      action.__raw = ''
-      function()
-	require('telescope.builtin').live_grep({
-	  grep_open_files = true,
-	  prompt_title = "live grep in open files"
-	})
-	end
-      '';
-      options.desc = "fuzzily search in open files";
-    }
-{  mode = "n";
-      key = "<leader>sf";
-      action.__raw = ''
-      function()
-	require('telescope.extensions').file_browser.file_browser({
-		path = "%:p:h",
-		cwd = telescope_buffer_dir(),
-		respect_gitignore = false,
-		hidden = true,
-		grouped = true,
-		previewer = false,
-		initial_mode = "normal",
-		layout_config = { height = 40 },
-	})
-	end
-      '';
-      options.desc = "Fuzzily search in open files";
-    }
-  ];
 }
