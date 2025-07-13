@@ -5,45 +5,36 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = {...}: {
-    homeManagerModules.default = {pkgs, ...}: let
-      staticConfig = ''
-        luafile ${builtins.toString ./lua/base.lua}
-      '';
-      telescope = import ./telescope {inherit pkgs;};
-      threesitter = import ./threesitter {inherit pkgs;};
-      lsp = import ./lsp {inherit pkgs;};
-      conform = import ./conform {inherit pkgs;};
-      copilot = import ./copilot {inherit pkgs;};
-    in {
-      programs.neovim = {
+  outputs = {nixvim, ...}: {
+    homeManagerModules.default = {...}: {
+      imports = [
+        nixvim.homeManagerModules.nixvim
+      ];
+
+      home.shellAliases.v = "nvim";
+
+      programs.nixvim = {
         enable = true;
-        viAlias = true;
         defaultEditor = true;
 
-        plugins =
-          telescope.plugins
-          ++ threesitter.plugins
-          ++ lsp.plugins
-          ++ conform.plugins
-          ++ copilot.plugins
-          ++ (with pkgs.vimPlugins; [
-            ]);
+        nixpkgs.useGlobalPackages = true;
 
-        extraPackages =
-          lsp.extraPackages
-          ++ conform.extraPackages
-          ++ (with pkgs; [
-            ripgrep
-            fd
-          ]);
+        # performance = {
+        #   combinePlugins = {
+        #     enable = true;
+        #     standalonePlugins = [
+        #       "hmts.nvim"
+        #       "neorg"
+        #       "nvim-treesitter"
+        #     ];
+        #   };
+        #   byteCompileLua.enable = true;
+        # };
 
-        extraPython3Packages = copilot.extraPython3Packages;
+        viAlias = true;
+        vimAlias = true;
 
-        extraConfig = builtins.concatStringsSep "\n" [
-          staticConfig
-          # Add additional config strings here if needed
-        ];
+        luaLoader.enable = true;
       };
     };
   };
